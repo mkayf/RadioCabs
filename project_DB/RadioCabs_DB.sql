@@ -14,7 +14,7 @@ CREATE TABLE Users (
 );
 
 
---Table for COmpanies--
+--Table for Companies--
 
 CREATE TABLE Companies (
     Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -95,3 +95,15 @@ CREATE TABLE Feedback (
     Description NVARCHAR(MAX),
     CreatedAt DATETIME DEFAULT GETDATE()
 );
+
+--Table for Services--
+
+
+CREATE TABLE Services(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    CompanyId INT NOT NULL,
+    VehicleType NVARCHAR(120) NOT NULL,
+    Description TEXT,
+    AvailableCity NVARCHAR(150) NOT NULL,
+    FarePerKm NVARCHAR(255) NOT NULL
+)
