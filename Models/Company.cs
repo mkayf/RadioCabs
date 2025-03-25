@@ -32,4 +32,6 @@ public partial class Company
     public string PaymentType { get; set; } = null!;
 
     public DateTime? CreatedAt { get; set; }
+
+    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
 }
