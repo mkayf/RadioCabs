@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 var provide = builder.Services.BuildServiceProvider();
 var config = provide.GetService<IConfiguration>();
-builder.Services.AddDbContext<RadioCabs_DBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("db")));
+builder.Services.AddDbContext<RadioCabsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("db")));
 
 
 var app = builder.Build();
