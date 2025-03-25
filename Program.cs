@@ -1,7 +1,16 @@
+using RadioCabs.Models;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var provide = builder.Services.BuildServiceProvider();
+var config = provide.GetService<IConfiguration>();
+builder.Services.AddDbContext<RadioCabs_DBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("db")));
+
 
 var app = builder.Build();
 
