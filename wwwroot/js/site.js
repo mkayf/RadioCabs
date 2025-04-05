@@ -1,4 +1,17 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// Company listing form amount toggler:
 
-// Write your JavaScript code.
+$('#paymentType').change(function () {
+    const paymentType = $(this).val();
+    const amountDisplay = $('#amountDisplay');
+    const amountSpan = $('#amount');
+
+    if (paymentType === 'monthly') {
+        amountSpan.text('15');
+        amountDisplay.show();
+    } else if (paymentType === 'quarterly') {
+        amountSpan.text('40');
+        amountDisplay.show();
+    } else {
+        amountDisplay.hide();
+    }
+});

@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewData["Title"] = "Listings";
+}
+
+@model List<RadioCabs.Models.Company>
+
+
+<div class="container my-5">
+    <div class="row" style="margin-top: 150px;">
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div class="alert alert-@TempData["AlertType"] alert-dismissible fade show fixed-bottom" style="margin:20px;">
+                @TempData["AlertMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+            <script>
+                // Auto-close alert after 5 seconds
+                setTimeout(() => {
+                    $('.alert').alert('close');
+                }, 5000);
+            </script>
+        }
+    <h1 class="mb-5">Radio Cabs Company Listings</h1>
+        <div class="col-12 col-md-12 col-lg-4">
+            <section class="bg-black p-4">
+               <h3 class="mb-3 text-white">Register your company</h3>
+                <form id="registrationForm" asp-action="Listings" method="post">
+                    @Html.AntiForgeryToken()
+                <div class="row g-3">
+                    <!-- Left Column -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                                <label name="CompanyName" class="form-label">Company Name</label>
+                                <input name="CompanyName" type="text" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                                <label name="Password" class="form-label">Password</label>
+                                <input name="Password" type="password" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                                <label name="ContactPerson" class="form-label">Contact Person</label>
+                                <input name="ContactPerson" type="text" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label name="Designation" class="form-label">Designation</label>
+                                <input name="Designation" type="text" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label name="Address" class="form-label">Address</label>
+                                <input name="Address" type="text" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label name="Mobile" class="form-label">Mobile Number</label>
+                                <input name="Mobile" type="tel" class="form-control" pattern="[0-9]{11}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label name="Telephone" class="form-label">Telephone</label>
+                            <input name="Telephone" type="tel" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label name="Fax" class="form-label">Fax</label>
+                                <input name="Fax" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label name="Email" class="form-label">Email Address</label>
+                                <input name="Email" type="email" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                                <label name="MembershipType" class="form-label">Membership Type</label>
+                            <select name="MembershipType" class="form-select" required>
+                                <option value="">Select</option>
+                                <option>Premium</option>
+                                <option>Basic</option>
+                                <option>Free</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label name="PaymentType" class="form-label">Payment Type</label>
+                                <select name="PaymentType" class="form-select" id="paymentType" required>
+                                <option value="">Select</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amount Display -->
+                <div class="alert alert-warning mt-3" id="amountDisplay" style="display: none;">
+                    Payable Amount: <strong>$<span id="amount">0</span></strong>
+                </div>
+
+                <button type="submit" class="btn btn-warning btn-lg w-100 mt-4">
+                    Register Now
+                </button>
+            </form>
+            </section>
+        </div>
+        <div class="col-12 col-md-12 col-lg-8">
+
+        </div>
+    </div>
+</div>

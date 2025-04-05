@@ -8,6 +8,17 @@ html {
   }
 }
 
+.taxi-theme {
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+}
+
+.taxi-header {
+    background: #343a40;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
