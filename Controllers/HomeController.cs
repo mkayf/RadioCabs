@@ -34,7 +34,12 @@ namespace RadioCabs.Controllers
             (Company company)
         {
 
-            Console.WriteLine("Form submitted");
+
+            if (!ModelState.IsValid)
+            {
+                TempData["AlertMessage"] = "Please fill in all required fields.";
+                TempData["AlertType"] = "danger";
+            }
 
             if (ModelState.IsValid)
             {
@@ -63,7 +68,8 @@ namespace RadioCabs.Controllers
                 }
             }
 
-            return View("Listings");
+            var companies = _context.Companies.ToList();
+            return View("Listings", companies);
         }
 
 
@@ -85,6 +91,60 @@ namespace RadioCabs.Controllers
             return View(drivers);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Drivers(Driver driver)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage); 
+                }
+
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    driver.CreatedAt = DateTime.Now;
+                    _context.Drivers.Add(driver);
+                    _context.SaveChanges();
+                    TempData["AlertMessage"] = "Driver registered successfully!";
+                    TempData["AlertType"] = "success";
+
+                    return RedirectToAction("Drivers");
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["AlertMessage"] = $"Error: {ex.Message}";
+                    TempData["AlertType"] = "danger";
+
+                    ModelState.AddModelError("", $"Database error: {ex.InnerException?.Message}");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error: {ex.Message}");
+                }
+            }
+
+            var drivers = _context.Drivers.ToList();
+            return View("Drivers", drivers);
+
+        }
+
+        public IActionResult DriverFullDetails(int id)
+        {
+            var driver = _context.Drivers.FirstOrDefault(d => d.Id == id);
+
+            if (driver == null)
+            {
+                return NotFound();
+            }
+
+            return View(driver);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

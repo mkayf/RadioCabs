@@ -9,8 +9,6 @@ public partial class Driver
 
     public string DriverName { get; set; } = null!;
 
-    public string DriverId { get; set; } = null!;
-
     public string Password { get; set; } = null!;
 
     public string? ContactPerson { get; set; }

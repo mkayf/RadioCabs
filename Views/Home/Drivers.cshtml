@@ -1,9 +1,8 @@
-﻿
-@{
-    ViewData["Title"] = "Listings";
+﻿@{
+    ViewData["Title"] = "Drivers";
 }
 
-@model List<RadioCabs.Models.Company>
+@model List<RadioCabs.Models.Driver>
 
 <div class="container my-5">
     <div class="row" style="margin-top: 150px;">
@@ -21,23 +20,23 @@
                 }, 5000);
             </script>
         }
-    <h1 class="mb-4">Radio Cabs Company Listings</h1>
+        <h1 class="mb-5">Hire Skilled Drivers Today</h1>
         <div class="col-12 col-md-12 col-lg-4">
-            @Html.Partial("_CompanyForm", new RadioCabs.Models.Company())
+            @Html.Partial("_DriverForm", new RadioCabs.Models.Driver())
         </div>
         <div class="col-12 col-md-12 col-lg-8">
             <div class="row">
                 @if(Model != null){
-                    @foreach (var company in Model)
+                    @foreach (var driver in Model)
                     {
                         <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card my-4 my-md-3 " style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                            <div class="card my-4 my-md-0" style="background-color: #f8f9fa; border: 1px solid #ddd;">
                                 <div class="card-body">
-                                    <h5>@company.CompanyName</h5>
-                                    <p class="text-black"><strong>Address:</strong> @company.Address</p>
-                                    <p class="text-black"><strong>Mobile:</strong> <a href="tel:@company.Mobile" target="_blank">@company.Mobile</a></p>
-                                    <p class="text-black"><strong>Email:</strong> <a href="mailto:@company.Email" target="_blank">@company.Email</a></p>
-                                    <a asp-action="CompanyFullDetails" asp-controller="Home" asp-route-id="@company.Id" class="btn btn-warning">More info</a>
+                                    <h5>@driver.DriverName</h5>
+                                    <p class="text-black"><strong>Address:</strong> @driver.Address</p>
+                                    <p class="text-black"><strong>Mobile:</strong> <a href="tel:@driver.Mobile" target="_blank">@driver.Mobile</a></p>
+                                    <p class="text-black"><strong>Email:</strong> <a href="mailto:@driver.Email" target="_blank">@driver.Email</a></p>
+                                    <a asp-action="DriverFullDetails" asp-controller="Home" asp-route-id="@driver.Id" class="btn btn-warning">More info</a>
                                 </div>
                             </div>
                         </div>

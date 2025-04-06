@@ -78,16 +78,11 @@ public partial class RadioCabsDbContext : DbContext
 
             entity.HasIndex(e => e.Email, "UQ__Drivers__A9D105345876CBBB").IsUnique();
 
-            entity.HasIndex(e => e.DriverId, "UQ__Drivers__F1B1CD251877AB43").IsUnique();
-
             entity.Property(e => e.City).HasMaxLength(100);
             entity.Property(e => e.ContactPerson).HasMaxLength(100);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.DriverId)
-                .HasMaxLength(50)
-                .HasColumnName("DriverID");
             entity.Property(e => e.DriverName).HasMaxLength(100);
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Mobile).HasMaxLength(15);
