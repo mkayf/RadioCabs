@@ -61,7 +61,7 @@ CREATE TABLE Advertisements (
     Designation NVARCHAR(100),
     Address NVARCHAR(MAX),
     Mobile NVARCHAR(15),
-    Telephone NVARCHAR(15),
+    Telephone NVARCHAR(15), 
     Fax NVARCHAR(20),
     Email NVARCHAR(100),
     Description NVARCHAR(MAX),

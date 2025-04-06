@@ -1,0 +1,97 @@
+﻿@model RadioCabs.Models.Company
+
+<section class="bg-black p-4">
+    <h3 class="mb-3 text-white">Register your company</h3>
+    <form id="registrationForm" asp-controller="Home" asp-action="Listings" method="post">
+        @Html.AntiForgeryToken()
+        <div class="row g-3">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="CompanyName" class="form-label">Company Name</label>
+                    <input asp-for="CompanyName" type="text" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ContactPerson" class="form-label">Contact Person</label>
+                    <input asp-for="ContactPerson" type="text" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Designation" class="form-label">Designation</label>
+                    <input asp-for="Designation" type="text" class="form-control" required>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Address</label>
+                    <input asp-for="Address" type="text" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Mobile" class="form-label">Mobile Number</label>
+                    <input asp-for="Mobile" type="tel" class="form-control" pattern="[0-9]{11}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Telephone" class="form-label">Telephone</label>
+                    <input asp-for="Telephone" type="tel" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Fax" class="form-label">Fax</label>
+                    <input asp-for="Fax" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email Address</label>
+                    <input asp-for="Email" type="email" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label asp-for="MembershipType" class="form-label">Membership Type</label>
+                    <select asp-for="MembershipType" class="form-select" required>
+                        <option value="">Select</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Basic">Basic</option>
+                        <option value="Free">Free</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label asp-for="PaymentType" class="form-label">Payment Type</label>
+                    <select asp-for="PaymentType" class="form-select" id="paymentType" required>
+                        <option value="">Select</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Quarterly">Quarterly</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amount Display -->
+        <div class="alert alert-warning mt-3" id="amountDisplay" style="display: none;">
+            Payable Amount: <strong>$<span id="amount">0</span></strong>
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg w-100 mt-4">
+            Register Now
+        </button>
+    </form>
+</section>

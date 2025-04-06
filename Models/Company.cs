@@ -9,8 +9,6 @@ public partial class Company
 
     public string CompanyName { get; set; } = null!;
 
-    public string CompanyId { get; set; } = null!;
-
     public string Password { get; set; } = null!;
 
     public string? ContactPerson { get; set; }

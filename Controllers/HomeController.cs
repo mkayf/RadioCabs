@@ -31,10 +31,11 @@ namespace RadioCabs.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Listings
-            (
-    [Bind("CompanyName,Password,ContactPerson,Designation,Address,Mobile,Telephone,Fax,Email,MembershipType,PaymentType")]
-    Company company)
+            (Company company)
         {
+
+            Console.WriteLine("Form submitted");
+
             if (ModelState.IsValid)
             {
                 try
@@ -65,10 +66,25 @@ namespace RadioCabs.Controllers
             return View("Listings");
         }
 
-        public IActionResult Privacy()
+
+        public IActionResult CompanyFullDetails(int id)
         {
-            return View();
+            var company = _context.Companies.FirstOrDefault(c => c.Id == id);
+
+            if (company == null) {
+                return NotFound();
+            }
+
+            return View(company);
         }
+
+
+        public IActionResult Drivers()
+        {
+            var drivers = _context.Drivers.ToList();
+            return View(drivers);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
