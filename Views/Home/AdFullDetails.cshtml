@@ -1,42 +1,31 @@
-﻿@model RadioCabs.Models.Driver
+﻿@model RadioCabs.Models.Advertisement
 
 @{
-    ViewData["Title"] = "DriverFullDetails";
+    ViewData["Title"] = "AdFullDetails";
 }
 
-<div class="container" style="margin: 150px auto">
-    <h1>Driver details</h1>
+
+<div class="container py-5" style="margin-top: 150px">
+    <h1>Advertisement</h1>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DriverName)
+            @Html.DisplayNameFor(model => model.CompanyName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DriverName)
+            @Html.DisplayFor(model => model.CompanyName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Designation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContactPerson)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContactPerson)
+            @Html.DisplayFor(model => model.Designation)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Mobile)
@@ -51,16 +40,16 @@
             @Html.DisplayFor(model => model.Telephone)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fax)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fax)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Experience)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Experience)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -81,7 +70,5 @@
             @Html.DisplayFor(model => model.CreatedAt)
         </dd>
     </dl>
-    <a asp-action="Drivers" asp-controller="Home" class="btn btn-warning">Go back</a>
-</div>
-<div>
+    <a asp-action="Advertisements" asp-controller="Home" class="btn btn-warning">Go back</a>
 </div>

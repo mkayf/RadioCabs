@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewData["Title"] = "Services";
+}
+
+
+<!-- Hero Section -->
+<section class="taxi-bg" style="padding: 80px">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3">Our Services</h1>
+        <p class="lead text-black">Your trusted partner in the taxi industry</p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Company Registration -->
+            <div class="col-md-4">
+                <div class="card h-100 service-card shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-building taxi-icon mb-3"></i>
+                        <h3 class="card-title">Taxi Co. Registration</h3>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Simplify registration process</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Access professional drivers</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Expand fleet efficiently</li>
+                        </ul>
+                        <a asp-action="Listings" asp-controller"Home" class="btn btn-outline-warning">Register company</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Driver Registration -->
+            <div class="col-md-4">
+                <div class="card h-100 service-card shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-id-card taxi-icon mb-3"></i>
+                        <h3 class="card-title">Driver Registration</h3>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Connect with companies</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Showcase experience</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Increase hiring chances</li>
+                        </ul>
+                        <a asp-action="Drivers" asp-controller"Home" class="btn btn-outline-warning">Driver registration</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advertisement -->
+            <div class="col-md-4">
+                <div class="card h-100 service-card shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-bullhorn taxi-icon mb-3"></i>
+                        <h3 class="card-title">Advertisement Services</h3>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Promote services</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Boost visibility</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Connect businesses</li>
+                        </ul>
+                        <a asp-action="Advertisements" asp-controller"Home" class="btn btn-outline-warning">Post ad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-us py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 text-white">Why Choose RadioCabs?</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fas fa-check-circle fa-2x text-success me-3"></i>
+                    <div>
+                        <h4 class="text-white-50">One-Stop Solution</h4>
+                        <p>Comprehensive platform for all taxi service needs</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fas fa-shield-alt fa-2x text-primary me-3"></i>
+                    <div>
+                        <h4 class="text-white-50">Secure Registrations</h4>
+                        <p>Verified and protected user data</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fas fa-wallet fa-2x text-warning me-3"></i>
+                    <div>
+                        <h4 class="text-white-50">Affordable Packages</h4>
+                        <p>Cost-effective advertising solutions</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fas fa-chart-line fa-2x text-info me-3"></i>
+                    <div>
+                        <h4 class="text-white-50">Business Growth</h4>
+                        <p>Expand your reach effectively</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

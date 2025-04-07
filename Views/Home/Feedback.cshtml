@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+@model RadioCabs.Models.Feedback
+
+<!-- Feedback Hero -->
+<section class="taxi-bg" style="padding: 100px">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3 text-black"><i class="fas fa-comments"></i> Feedback Hub</h1>
+        <p class="lead text-black">Your voice drives our journey</p>
+    </div>
+</section>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-@TempData["AlertType"] alert-dismissible fade show" style="margin:20px;">
+        @TempData["AlertMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <script>
+        // Auto-close alert after 5 seconds
+        setTimeout(() => {
+            $('.alert').alert('close');
+        }, 5000);
+    </script>
+}
+
+<!-- Feedback Form Section -->
+<section class="py-5 feedback-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-card card shadow p-4">
+                    <form asp-action="Feedback" asp-controller="Home" method="post">
+                        @Html.AntiForgeryToken()
+                        <h5 class="text-black my-3">Submit a feedback to help us improve our services</h5>
+                        <!-- Name -->
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="John Doe" required>
+                        </div>
+
+                        <!-- Contact Info Row -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label asp-for="Mobile" class="form-label">Mobile No. <span class="text-danger">*</span></label>
+                                <input asp-for="Mobile" type="tel" class="form-control" placeholder="0300-1234567" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label">Email</label>
+                                <input asp-for="Email" type="email" class="form-control" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Location Row -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label asp-for="City" class="form-label">City <span class="text-danger">*</span></label>
+                                <input asp-for="City" type="text" class="form-control" placeholder="Karachi" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Type" class="form-label">Feedback Type <span class="text-danger">*</span></label>
+                                <select asp-for="Type" class="form-select">
+                                    <option value="">Select Type</option>
+                                    <option value="Complaint">Complaint</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                    <option value="Compliment">Compliment</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label">Detailed Feedback <span class="text-danger">*</span></label>
+                            <textarea asp-for="Description" class="form-control" rows="5"
+                                      placeholder="Describe your experience..."></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn taxi-bg px-5 py-2">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

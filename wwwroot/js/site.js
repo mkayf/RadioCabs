@@ -1,6 +1,6 @@
 ﻿// Company listing form amount toggler:
 
-if (window.location.pathname.includes('/Home/Listings')) {
+if (window.location.pathname.includes('/Home/Listings') || window.location.pathname.includes('/Home/Advertisements')) {
     $('#paymentType').change(function () {
         const paymentType = $(this).val();
         const amountDisplay = $('#amountDisplay');

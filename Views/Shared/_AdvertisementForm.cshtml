@@ -1,0 +1,82 @@
+﻿@model RadioCabs.Models.Advertisement
+
+<section class="bg-black p-4 mt-3">
+    <h3 class="mb-3 text-white">Post an Ad</h3>
+   
+<form id="advertisementForm" asp-controller="Home" asp-action="Advertisements" method="post">
+    @Html.AntiForgeryToken()
+    <div class="row g-3">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label asp-for="CompanyName" class="form-label">Company Name</label>
+                <input asp-for="CompanyName" type="text" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Designation" class="form-label">Designation</label>
+                <input asp-for="Designation" type="text" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label">Address</label>
+                <input asp-for="Address" type="text" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Mobile" class="form-label">Mobile</label>
+                <input asp-for="Mobile" type="number" class="form-control" required>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label asp-for="Telephone" class="form-label">Telephone</label>
+                <input asp-for="Telephone" type="number" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Fax" class="form-label">Fax</label>
+                <input asp-for="Fax" type="tel" class="form-control" pattern="[0-9]{11}" required>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <input asp-for="Description" type="text" class="form-control">
+            </div>
+        </div>
+
+        <!-- Full Width Payment Type -->
+        <div class="col-12">
+            <div class="mb-3">
+                <label asp-for="PaymentType" class="form-label">Payment Type</label>
+                <select asp-for="PaymentType" class="form-select" id="paymentType" required>
+                    <option value="">Select</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Quarterly">Quarterly</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Amount Display -->
+        <div class="col-12">
+            <div class="alert alert-warning mt-3" id="amountDisplay" style="display: none;">
+                Payable Amount: <strong>$<span id="amount">0</span></strong>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-warning btn-lg w-100 mt-4">
+                Register Now
+            </button>
+        </div>
+    </div>
+</form>
+</section>

@@ -5,6 +5,7 @@
 @model List<RadioCabs.Models.Driver>
 
 <div class="container my-5">
+
     <div class="row" style="margin-top: 150px;">
         @if (TempData["AlertMessage"] != null)
         {
@@ -21,6 +22,7 @@
             </script>
         }
         <h1 class="mb-5">Hire Skilled Drivers Today</h1>
+
         <div class="col-12 col-md-12 col-lg-4">
             @Html.Partial("_DriverForm", new RadioCabs.Models.Driver())
         </div>

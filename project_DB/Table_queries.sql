@@ -19,7 +19,6 @@ CREATE TABLE Users (
 CREATE TABLE Companies (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     CompanyName NVARCHAR(255) NOT NULL,
-    CompanyID NVARCHAR(50) UNIQUE NOT NULL,
     Password NVARCHAR(255) NOT NULL,
     ContactPerson NVARCHAR(100),
     Designation NVARCHAR(100),
@@ -39,7 +38,6 @@ CREATE TABLE Companies (
 CREATE TABLE Drivers (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     DriverName NVARCHAR(100) NOT NULL,
-    DriverID NVARCHAR(50) UNIQUE NOT NULL,
     Password NVARCHAR(255) NOT NULL,
     ContactPerson NVARCHAR(100),
     Address NVARCHAR(MAX),

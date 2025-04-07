@@ -1,7 +1,8 @@
 ﻿@model RadioCabs.Models.Driver
 
 <section class="bg-black p-4">
-    <h3 class="mb-3 text-white">Driver registration</h3>
+    <h3 class="mb-3 text-white">Driver Registration</h3>
+
     <form id="driverRegistrationForm" asp-controller="Home" asp-action="Drivers" method="post">
         @Html.AntiForgeryToken()
         <div class="row g-3">
@@ -50,22 +51,20 @@
                     <input asp-for="Experience" type="number" class="form-control">
                 </div>
             </div>
-        </div>
 
-        <!-- Bottom Section -->
-        <div class="row g-3">
+            <!-- Full Width Section -->
             <div class="col-md-4">
                 <div class="mb-3">
-                    <label asp-for="Email" class="form-label">Email address</label>
+                    <label asp-for="Email" class="form-label">Email Address</label>
                     <input asp-for="Email" type="email" class="form-control" required>
                 </div>
             </div>
 
             <div class="col-md-4">
-                    <div class="mb-3">
-                        <label asp-for="Description" class="form-label">About yourself</label>
-                        <input asp-for="Description" type="text" class="form-control" required> 
-                    </div>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">About Yourself</label>
+                    <input asp-for="Description" type="text" class="form-control" required>
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -78,15 +77,20 @@
                     </select>
                 </div>
             </div>
-        </div>
 
-        <!-- Amount Display -->
-        <div class="alert alert-warning mt-3" id="amountDisplay" style="display: none;">
-            Payable Amount: <strong>$<span id="amount">0</span></strong>
-        </div>
+            <!-- Amount Display -->
+            <div class="col-12">
+                <div class="alert alert-warning mt-3" id="amountDisplay" style="display: none;">
+                    Payable Amount: <strong>$<span id="amount">0</span></strong>
+                </div>
+            </div>
 
-        <button type="submit" class="btn btn-warning btn-lg w-100 mt-4">
-            Register Now
-        </button>
+            <!-- Submit Button -->
+            <div class="col-12">
+                <button type="submit" class="btn btn-warning btn-lg w-100 mt-4">
+                    Register Now
+                </button>
+            </div>
+        </div>
     </form>
 </section>

@@ -125,6 +125,8 @@ namespace RadioCabs.Controllers
                 }
                 catch (Exception ex)
                 {
+
+                    Console.WriteLine(ex);
                     ModelState.AddModelError("", $"Error: {ex.Message}");
                 }
             }
@@ -144,6 +146,121 @@ namespace RadioCabs.Controllers
             }
 
             return View(driver);
+        }
+
+        public IActionResult Advertisements()
+        {
+            var advertisements = _context.Advertisements.ToList();
+            return View(advertisements);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Advertisements(Advertisement advertisement)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    advertisement.CreatedAt = DateTime.Now;
+                    _context.Advertisements.Add(advertisement);
+                    _context.SaveChanges();
+                    TempData["AlertMessage"] = "Advertisement posted successfully!";
+                    TempData["AlertType"] = "success";
+
+                    return RedirectToAction("Advertisements");
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["AlertMessage"] = $"Error: {ex.Message}";
+                    TempData["AlertType"] = "danger";
+
+                    ModelState.AddModelError("", $"Database error: {ex.InnerException?.Message}");
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex);
+                    ModelState.AddModelError("", $"Error: {ex.Message}");
+                }
+            }
+
+            var advertisements = _context.Drivers.ToList();
+            return View("Advertisements", advertisement);
+
+        }
+
+        public IActionResult AdFullDetails(int id)
+        {
+            var ad = _context.Advertisements.FirstOrDefault(ad => ad.Id == id);
+
+            if (ad == null)
+            {
+                return NotFound();
+            }
+
+            return View(ad);
+        }
+
+        public IActionResult Services()
+        {
+            return View();
+        }
+
+        public IActionResult Feedback()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Feedback(Feedback feedback)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    feedback.CreatedAt = DateTime.Now;
+                    _context.Feedbacks.Add(feedback);
+                    _context.SaveChanges();
+                    TempData["AlertMessage"] = "Feedback submitted successfully!";
+                    TempData["AlertType"] = "success";
+
+                    return RedirectToAction("Feedback");
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["AlertMessage"] = $"Error: {ex.Message}";
+                    TempData["AlertType"] = "danger";
+
+                    ModelState.AddModelError("", $"Database error: {ex.InnerException?.Message}");
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex);
+                    ModelState.AddModelError("", $"Error: {ex.Message}");
+                }
+            }
+
+            return View("Feedback");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

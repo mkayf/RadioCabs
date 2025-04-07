@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Advertisements";
+}
+
+@model List<RadioCabs.Models.Advertisement>
+
+<div class="container my-5">
+    <div class="row" style="margin-top: 150px;">
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div class="alert alert-@TempData["AlertType"] alert-dismissible fade show" style="margin:20px;">
+                @TempData["AlertMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+            <script>
+                //Auto-close alert after 5 seconds
+                setTimeout(() => {
+                    $('.alert').alert('close');
+                }, 5000);
+            </script>
+        }
+        <h1 class="mb-4">Post Advertisements for your company</h1>
+       
+        <div class="col-12 col-md-12 col-lg-4">
+            @Html.Partial("_AdvertisementForm", new RadioCabs.Models.Advertisement())
+        </div>
+        <div class="col-12 col-md-12 col-lg-8">
+            <div class="row">
+                @if (Model != null)
+                {
+                    @foreach (var advertisement in Model)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card my-4 my-md-3 " style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                                <div class="card-title text-black fs-4 mt-4 ms-3">Ad</div>
+                                <div class="card-body">
+                                    <h5>@advertisement.CompanyName</h5>
+                                    <p class="text-black"><strong>Address:</strong> @advertisement.Address</p>
+                                    <p class="text-black"><strong>Mobile:</strong> <a href="tel:@advertisement.Mobile" target="_blank">@advertisement.Mobile</a></p>
+                                    <p class="text-black"><strong>Email:</strong> <a href="mailto:@advertisement.Email" target="_blank">@advertisement.Email</a></p>
+                                    <p class="text-black"><strong>Description:</strong> @advertisement.Description</p>
+                                    <a asp-action="AdFullDetails" asp-controller="Home" asp-route-id="@advertisement.Id" class="btn btn-warning">View details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        
+    
+    </div>
+   </div>
+
