@@ -9,6 +9,8 @@ public partial class Company
 
     public string CompanyName { get; set; } = null!;
 
+    public string CompanyId { get; set; } = null!;
+
     public string Password { get; set; } = null!;
 
     public string? ContactPerson { get; set; }
@@ -30,6 +32,4 @@ public partial class Company
     public string PaymentType { get; set; } = null!;
 
     public DateTime? CreatedAt { get; set; }
-
-    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
 }

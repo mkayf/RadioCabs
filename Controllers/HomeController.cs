@@ -146,6 +146,29 @@ namespace RadioCabs.Controllers
             return View(driver);
         }
 
+
+        //GET: Feedback/Create
+        public IActionResult FeedBack()
+        {
+            return View();
+        }
+
+        // POST: Feedback/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FeedBack(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Feedbacks.Add(feedback);
+                _context.SaveChanges();
+                ViewBag.Message = "Thank you! Your feedback has been submitted.";
+                return View();
+            }
+            return View(feedback);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

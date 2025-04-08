@@ -53,7 +53,7 @@ builder.Services.AddDbContext<RadioCabsDbContext>(options =>
 
 ---
 
-## 5. Scaffold the Database
+## 5. Scaffold the Database                     
 Run the following scaffold command to generate models and establish the connection:
 
 ```powershell

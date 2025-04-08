@@ -1,0 +1,59 @@
+﻿@model RadioCabs.Models.Feedback;
+
+@{
+    ViewData["Title"] = "Feedback Form";
+}
+
+<h2 class="form-title">We Value Your Feedback</h2>
+ <div class="pt-100">
+     <form asp-action="FeedBack" method="post" class="feedback-form">
+         <div class="form-group">
+             <label asp-for="Name" class="form-label"></label>
+             <input asp-for="Name" class="form-input" placeholder="Enter your name" />
+             <span asp-validation-for="Name" class="validation-message"></span>
+         </div>
+
+         <div class="form-group">
+             <label asp-for="Mobile" class="form-label"></label>
+             <input asp-for="Mobile" class="form-input" placeholder="Enter your mobile number" />
+         </div>
+
+         <div class="form-group">
+             <label asp-for="Email" class="form-label"></label>
+             <input asp-for="Email" class="form-input" placeholder="Enter your email address" />
+             <span asp-validation-for="Email" class="validation-message"></span>
+         </div>
+
+         <div class="form-group">
+             <label asp-for="City" class="form-label"></label>
+             <input asp-for="City" class="form-input" placeholder="Enter your city" />
+         </div>
+
+         <div class="form-group">
+             <label asp-for="Type" class="form-label"></label>
+             <select asp-for="Type" asp-items="@(new SelectList(new[] { "Complaint", "Suggestion", "Compliment" }))" class="form-select">
+                 <option value="">-- Select --</option>
+             </select>
+             <span asp-validation-for="Type" class="validation-message"></span>
+         </div>
+
+         <div class="form-group">
+             <label asp-for="Description" class="form-label"></label>
+             <textarea asp-for="Description" class="form-textarea" placeholder="Enter your feedback"></textarea>
+         </div>
+
+         <button type="submit" class="submit-button">Submit</button>
+     </form>
+
+ </div>
+
+@if (ViewBag.Message != null)
+{
+    <p class="success-message">@ViewBag.Message</p>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
